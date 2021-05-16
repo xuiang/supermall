@@ -1,9 +1,9 @@
 <template>
-  <div id="app">
+  <div id='app'>
     <router-view></router-view>
-    <bar>
+    <bottom-bar>
       <div>
-        <barItem path='/home'>
+        <bottom-bar-item path='/home'>
           <template v-slot:active_img>
             <img src='./assets/img/home_active.svg'>
           </template>
@@ -13,10 +13,10 @@
           <template v-slot:description>
             <div >首页</div>
           </template>
-        </barItem>
+        </bottom-bar-item>
       </div>
       <div>
-        <barItem path='/sort' color='green'>
+        <bottom-bar-item path='/sort' color='green'>
           <template v-slot:active_img>
             <img src='./assets/img/sort_active.svg'>
           </template>
@@ -26,10 +26,10 @@
           <template v-slot:description>
             <div>分类</div>
           </template>
-        </barItem>
+        </bottom-bar-item>
       </div>
       <div>
-        <barItem path='/shopcar' color='orange'>
+        <bottom-bar-item path='/shopcar' color='orange'>
           <template v-slot:active_img>
             <img src='./assets/img/shopcar_active.svg'>
           </template>
@@ -39,10 +39,10 @@
           <template v-slot:description>
             <div>购物车</div>
           </template>
-        </barItem>
+        </bottom-bar-item>
       </div>
       <div>
-        <barItem path='/profile' color='yellow'>
+        <bottom-bar-item path='/profile' color='yellow'>
         <template v-slot:active_img>
             <img src='./assets/img/profile_active.svg'>
           </template>
@@ -52,30 +52,23 @@
           <template v-slot:description>
             <div>我的</div>
           </template>
-        </barItem>
+        </bottom-bar-item>
       </div>
-
-    </bar>
+    </bottom-bar>
   </div>
-
 </template>
 
 <script>
-
-  import bar from './components/common/bar.vue'
-  import barItem from './components/common/barItem.vue'
-  export default {
-    name: 'App',
-    components: {
-      bar,
-      barItem,
-    },
+import bottomBar from './components/common/bar.vue'
+import bottomBarItem from './components/common/barItem.vue'
+export default {
+  name: 'app',
+  components: {
+    bottomBar,
+    bottomBarItem
   }
+}
 </script>
-
 <style>
   @import 'assets/css/base.css';
 </style>
-
-
-

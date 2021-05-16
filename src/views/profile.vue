@@ -1,6 +1,6 @@
 <template lang="">
   <div>
-    <h2>首页</h2>
+    <h2>我的</h2>
   </div>
 </template>
 <script>
@@ -8,6 +8,6 @@ export default {
 
 }
 </script>
-<style lang="">
+<style>
 
 </style>

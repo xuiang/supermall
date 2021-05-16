@@ -5,10 +5,10 @@
 </template>
 <script>
 export default {
-  name:'bar',
+  name: 'bar'
 }
 </script>
-<style lang="">
+<style>
 .bar{
   position:absolute;
   display:flex;

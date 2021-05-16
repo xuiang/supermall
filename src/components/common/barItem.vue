@@ -6,37 +6,38 @@
   </div>
 </template>
 <script>
-  export default {
-    name: 'barItem',
-    props: {
-      path: {
-        type: String,
-      },
-      color: {
-        type: String,
-        default: 'rgb(214, 37, 121)'
-      }
+export default {
+  name: 'barItem',
+  props: {
+    path: {
+      type: String
     },
-    methods: {
-      getPath() {
-        this.$router.replace(this.path)
-        this.color_ = this.color
-      }
+    color: {
+      type: String,
+      default: 'rgb(214, 37, 121)'
+    }
+  },
+  methods: {
+    getPath () {
+      this.$router.replace(this.path)
+      this.color_ = this.color
+    }
+  },
+  computed: {
+    active () {
+      return this.$route.path.indexOf(this.path) !== -1
     },
-    computed: {
-      active() {
-        return this.$route.path.indexOf(this.path) !== -1
+    color_: {
+      get () {
+        return this.active ? { color: this.color } : {} // 注意用this
       },
-      color_:{
-        get() {
-          return this.active ? {color: this.color} : {} //注意用this
-        },
-        set(){}
-      }
+      set () {}
     }
   }
+}
 </script>
-<style lang="">
+
+<style>
   .bar-item {
     display: flex;
     flex: 1;
