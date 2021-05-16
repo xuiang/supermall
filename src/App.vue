@@ -1,26 +1,81 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <router-view></router-view>
+    <bar>
+      <div>
+        <barItem path='/home'>
+          <template v-slot:active_img>
+            <img src='./assets/img/home_active.svg'>
+          </template>
+          <template v-slot:img>
+            <img src='./assets/img/home.svg'>
+          </template>
+          <template v-slot:description>
+            <div >首页</div>
+          </template>
+        </barItem>
+      </div>
+      <div>
+        <barItem path='/sort' color='green'>
+          <template v-slot:active_img>
+            <img src='./assets/img/sort_active.svg'>
+          </template>
+          <template v-slot:img>
+            <img src='./assets/img/sort.svg'>
+          </template>
+          <template v-slot:description>
+            <div>分类</div>
+          </template>
+        </barItem>
+      </div>
+      <div>
+        <barItem path='/shopcar' color='orange'>
+          <template v-slot:active_img>
+            <img src='./assets/img/shopcar_active.svg'>
+          </template>
+          <template v-slot:img>
+            <img src='./assets/img/shopcar.svg'>
+          </template>
+          <template v-slot:description>
+            <div>购物车</div>
+          </template>
+        </barItem>
+      </div>
+      <div>
+        <barItem path='/profile' color='yellow'>
+        <template v-slot:active_img>
+            <img src='./assets/img/profile_active.svg'>
+          </template>
+          <template v-slot:img>
+            <img src='./assets/img/profile.svg'>
+          </template>
+          <template v-slot:description>
+            <div>我的</div>
+          </template>
+        </barItem>
+      </div>
+
+    </bar>
+  </div>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  import bar from './components/common/bar.vue'
+  import barItem from './components/common/barItem.vue'
+  export default {
+    name: 'App',
+    components: {
+      bar,
+      barItem,
+    },
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  @import 'assets/css/base.css';
 </style>
+
+
+
