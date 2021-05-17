@@ -5,10 +5,10 @@
       <div>
         <bottom-bar-item path='/home'>
           <template v-slot:active_img>
-            <img src='./assets/img/home_active.svg'>
+            <img src='./assets/img/tabbar/home_active.svg'>
           </template>
           <template v-slot:img>
-            <img src='./assets/img/home.svg'>
+            <img src='./assets/img/tabbar/home.svg'>
           </template>
           <template v-slot:description>
             <div >首页</div>
@@ -18,10 +18,10 @@
       <div>
         <bottom-bar-item path='/sort' color='green'>
           <template v-slot:active_img>
-            <img src='./assets/img/sort_active.svg'>
+            <img src='./assets/img/tabbar/sort_active.svg'>
           </template>
           <template v-slot:img>
-            <img src='./assets/img/sort.svg'>
+            <img src='./assets/img/tabbar/sort.svg'>
           </template>
           <template v-slot:description>
             <div>分类</div>
@@ -31,10 +31,10 @@
       <div>
         <bottom-bar-item path='/shopcar' color='orange'>
           <template v-slot:active_img>
-            <img src='./assets/img/shopcar_active.svg'>
+            <img src='./assets/img/tabbar/shopcar_active.svg'>
           </template>
           <template v-slot:img>
-            <img src='./assets/img/shopcar.svg'>
+            <img src='./assets/img/tabbar/shopcar.svg'>
           </template>
           <template v-slot:description>
             <div>购物车</div>
@@ -44,10 +44,10 @@
       <div>
         <bottom-bar-item path='/profile' color='yellow'>
         <template v-slot:active_img>
-            <img src='./assets/img/profile_active.svg'>
+            <img src='./assets/img/tabbar/profile_active.svg'>
           </template>
           <template v-slot:img>
-            <img src='./assets/img/profile.svg'>
+            <img src='./assets/img/tabbar/profile.svg'>
           </template>
           <template v-slot:description>
             <div>我的</div>
