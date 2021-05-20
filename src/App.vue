@@ -59,8 +59,8 @@
 </template>
 
 <script>
-import bottomBar from './components/common/bar.vue'
-import bottomBarItem from './components/common/barItem.vue'
+import bottomBar from './components/common/tabbar/bar.vue'
+import bottomBarItem from './components/common/tabbar/barItem.vue'
 export default {
   name: 'app',
   components: {

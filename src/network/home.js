@@ -7,7 +7,8 @@ export function getHomeData () {
       timeout: 5000
     },
     requestConfig: {
-      url: '/home/multidata'
+      url: '/home/multidata',
+      methods: 'get'
     }
   })
 }
