@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-const Home = () => import('../views/home.vue')
+const Home = () => import('../views/home/home.vue')
 const Profile = () => import('../views/profile.vue')
 const shopCar = () => import('../views/shopcar.vue')
 const Sort = () => import('../views/sort.vue')

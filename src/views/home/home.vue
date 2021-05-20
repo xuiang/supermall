@@ -6,23 +6,26 @@
       </template>
     </navigationbar>
     <swiper v-if = "banner" :banner_ = 'banner'></swiper>
+    <recommend v-if = "recommend" :recommends = 'recommend.list'></recommend>
   </div>
 </template>
 <script>
 import navigationbar from 'common/navigationbar/navigationbar.vue'
 import { getHomeData } from 'network/home.js'
 import swiper from 'common/swiper/swiper.vue'
+import recommend from 'views/home/childrenComponents/homeRecommend.vue'
 export default {
   name: 'home',
   data () {
     return {
       banner: 0,
-      recommend: []
+      recommend: 0
     }
   },
   components: {
     navigationbar,
-    swiper
+    swiper,
+    recommend
   },
   created () {
     getHomeData().then(data => {

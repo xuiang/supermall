@@ -8,7 +8,7 @@ module.exports = {
         router: '@/router',
         network: '@/network',
         store: '@/store',
-        views: '@/store'
+        views: '@/views'
       }
     }
   }
