@@ -12,6 +12,8 @@ export default {
 </script>
 <style>
   .nav-bar{
+    position:fixed;
+    top:0;
     display: flex;
     width:100vw;
     height:44px;
@@ -20,6 +22,7 @@ export default {
     color:#fff;
     line-height:44px;
     text-align:center;
+    z-index:10000;
   }
   .nav-bar > .left, .right{
     width:60px;

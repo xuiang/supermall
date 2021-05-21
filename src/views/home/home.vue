@@ -7,13 +7,17 @@
     </navigationbar>
     <swiper v-if = "banner" :banner_ = 'banner'></swiper>
     <recommend v-if = "recommend" :recommends = 'recommend.list'></recommend>
+    <week-top/>
   </div>
 </template>
 <script>
 import navigationbar from 'common/navigationbar/navigationbar.vue'
-import { getHomeData } from 'network/home.js'
 import swiper from 'common/swiper/swiper.vue'
 import recommend from 'views/home/childrenComponents/homeRecommend.vue'
+import weekTop from 'views/home/childrenComponents/weekTop.vue'
+
+import { getHomeData } from 'network/home.js'
+
 export default {
   name: 'home',
   data () {
@@ -25,7 +29,8 @@ export default {
   components: {
     navigationbar,
     swiper,
-    recommend
+    recommend,
+    weekTop
   },
   created () {
     getHomeData().then(data => {

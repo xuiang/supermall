@@ -10,7 +10,7 @@ export default {
 </script>
 <style>
 .bar{
-  position:absolute;
+  position:fixed;
   display:flex;
   justify-content:space-evenly;
   align-items:center;
@@ -19,7 +19,8 @@ export default {
   bottom:0;
   height:49px;
   box-shadow:0 -2px 2px #ccc;
-  background-color:#f2f2f2
+  background-color:#f2f2f2;
+  z-index:10000;
 }
 .bar > div{
   display:flex;

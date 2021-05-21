@@ -1,6 +1,6 @@
 
 <template>
-<div @click='test'>
+<div @click='test' class='swiper-self'>
   <swiper :spaceBetween="0" :centeredSlides="true" :autoplay="{
     'delay': 2500,
     'disableOnInteraction': false
@@ -58,3 +58,8 @@ export default {
   }
 }
 </script>
+<style>
+.swiper-self{
+  padding-top:44px;
+}
+</style>
