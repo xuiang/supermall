@@ -2,7 +2,7 @@
   <div>
     <navigationbar>
       <template v-slot:center>
-        <span>首页</span>
+        <span>购物街</span>
       </template>
     </navigationbar>
     <swiper v-if = "banner" :banner_ = 'banner'></swiper>
