@@ -8,6 +8,41 @@
     <swiper v-if = "banner" :banner_ = 'banner'></swiper>
     <recommend v-if = "recommend" :recommends = 'recommend.list'></recommend>
     <week-top/>
+    <tab-control :titles='["流行","新款","精选"]'></tab-control>
+    <ul>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+      <li>hh</li>
+    </ul>
   </div>
 </template>
 <script>
@@ -15,6 +50,8 @@ import navigationbar from 'common/navigationbar/navigationbar.vue'
 import swiper from 'common/swiper/swiper.vue'
 import recommend from 'views/home/childrenComponents/homeRecommend.vue'
 import weekTop from 'views/home/childrenComponents/weekTop.vue'
+
+import tabControl from 'content/tabControl/tabControl.vue'
 
 import { getHomeData } from 'network/home.js'
 
@@ -30,7 +67,8 @@ export default {
     navigationbar,
     swiper,
     recommend,
-    weekTop
+    weekTop,
+    tabControl
   },
   created () {
     getHomeData().then(data => {
