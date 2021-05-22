@@ -9,7 +9,7 @@
     <recommend v-if = "recommend" :recommends = 'recommend.list'></recommend>
     <week-top/>
     <tab-control :titles='["流行", "新款", "热销"]' @transferKeyword='markControl'></tab-control>
-    <goods-list :goodList='goods[this.tabControlKeyword].list'/>
+    <goods-list :goodList='goods[tabControlKeyword].list'/>
   </div>
 </template>
 <script>
@@ -46,7 +46,6 @@ export default {
           list: []
         }
       },
-      goodsDscription: ['pop', 'new', 'sell'],
       tabControlKeyword: 'pop'
     }
   },
@@ -66,7 +65,17 @@ export default {
   },
   methods: {
     markControl (index) {
-      this.tabControlKeyword = this.goodsDscription[index]
+      switch (index) {
+        case 0:
+          this.tabControlKeyword = 'pop'
+          break
+        case 1:
+          this.tabControlKeyword = 'new'
+          break
+        case 2:
+          this.tabControlKeyword = 'sell'
+          break
+      }
     },
     getHomeData () {
       getHomeData().then(data => {

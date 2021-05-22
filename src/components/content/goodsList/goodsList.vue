@@ -21,5 +21,9 @@ export default {
 }
 </script>
 <style>
-
+.goods-list{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-around;
+}
 </style>
