@@ -33,6 +33,8 @@ export default {
 <style>
 .tab-control{
   display:flex;
+  position:sticky;
+  top:44px;
   line-height:44px;
   text-align:center;
   background-color:white;
@@ -49,9 +51,5 @@ export default {
 }
 .active span{
   border-bottom:3px solid pink;
-}
-.tab-control{
-  position:sticky;
-  top:44px;
 }
 </style>

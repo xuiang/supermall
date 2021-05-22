@@ -5,28 +5,36 @@
         <span>购物街</span>
       </template>
     </navigationbar>
-    <swiper v-if = "banner" :banner_ = 'banner'></swiper>
-    <recommend v-if = "recommend" :recommends = 'recommend.list'></recommend>
-    <week-top/>
-    <tab-control :titles='["流行", "新款", "热销"]' @transferKeyword='markControl'></tab-control>
-    <goods-list :goodList='goods[tabControlKeyword].list'/>
+    <div class='wrapper'>
+      <div class='content'>
+        <swiper v-if = "banner" :banner_ = 'banner'></swiper>
+        <recommend v-if = "recommend" :recommends = 'recommend.list'></recommend>
+        <week-top/>
+        <tab-control :titles='["流行", "新款", "热销"]' @transferKeyword='markControl'></tab-control>
+        <goods-list :goodList='goodsShow'/>
+      </div>
+    </div>
   </div>
 </template>
 <script>
+// common中的内容 ↓
 import navigationbar from 'common/navigationbar/navigationbar.vue'
 import swiper from 'common/swiper/swiper.vue'
 import recommend from 'views/home/childrenComponents/homeRecommend.vue'
 import weekTop from 'views/home/childrenComponents/weekTop.vue'
-import goodsList from 'content/goodsList/goodsList.vue'
-
+// content中的内容 ↓
 import tabControl from 'content/tabControl/tabControl.vue'
-
+import goodsList from 'content/goodsList/goodsList.vue'
+// 网络请求的内容 ↓
 import {
   getHomeData,
   getHomeGoods
 } from 'network/home.js'
+// 外部库 ↓
+import Bscroll from 'better-scroll'
 
 export default {
+  // 基本属性 ↓
   name: 'home',
   data () {
     return {
@@ -46,7 +54,8 @@ export default {
           list: []
         }
       },
-      tabControlKeyword: 'pop'
+      tabControlKeyword: 'pop',
+      scroll: null
     }
   },
   components: {
@@ -56,12 +65,6 @@ export default {
     weekTop,
     tabControl,
     goodsList
-  },
-  created () {
-    this.getHomeData()
-    this.getHomeGoods('pop')
-    this.getHomeGoods('new')
-    this.getHomeGoods('sell')
   },
   methods: {
     markControl (index) {
@@ -92,11 +95,35 @@ export default {
         this.goods[type].page += 1
       })
     }
+  },
+  computed: {
+    goodsShow () {
+      return this.goods[this.tabControlKeyword].list
+    }
+  },
+  // 生命周期函数
+  created () {
+    this.getHomeData()
+    this.getHomeGoods('pop')
+    this.getHomeGoods('new')
+    this.getHomeGoods('sell')
+  },
+  mounted () {
+    this.scroll = new Bscroll('.wrapper', {
+      probeType: 3,
+      pullUpLoad: true
+    })
+    this.scroll.on('scroll', (position) => {
+      console.log(position.x, position.y)
+    })
   }
 }
 </script>
 <style>
 .home{
   margin-bottom:49px;
+}
+.wrapper{
+  height:500px;
 }
 </style>
