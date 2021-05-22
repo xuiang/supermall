@@ -6,3 +6,9 @@ body{
 a{
   text-decoration: none;
 }
+p{
+  margin: 0.3em;
+}
+a{
+  color:rgb(22, 21, 21);
+}

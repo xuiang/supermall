@@ -25,6 +25,7 @@ export default {
   methods: {
     tabClick (index) {
       this.active_ = index
+      this.$emit('transferKeyword', index)
     }
   }
 }

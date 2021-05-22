@@ -1,5 +1,5 @@
 <template lang="">
-  <div>
+  <div class='home'>
     <navigationbar>
       <template v-slot:center>
         <span>购物街</span>
@@ -8,41 +8,8 @@
     <swiper v-if = "banner" :banner_ = 'banner'></swiper>
     <recommend v-if = "recommend" :recommends = 'recommend.list'></recommend>
     <week-top/>
-    <tab-control :titles='["流行","新款","精选"]'></tab-control>
-    <ul>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-      <li>hh</li>
-    </ul>
+    <tab-control :titles='["流行", "新款", "热销"]' @transferKeyword='markControl'></tab-control>
+    <goods-list :goodList='goods[this.tabControlKeyword].list'/>
   </div>
 </template>
 <script>
@@ -50,17 +17,37 @@ import navigationbar from 'common/navigationbar/navigationbar.vue'
 import swiper from 'common/swiper/swiper.vue'
 import recommend from 'views/home/childrenComponents/homeRecommend.vue'
 import weekTop from 'views/home/childrenComponents/weekTop.vue'
+import goodsList from 'content/goodsList/goodsList.vue'
 
 import tabControl from 'content/tabControl/tabControl.vue'
 
-import { getHomeData } from 'network/home.js'
+import {
+  getHomeData,
+  getHomeGoods
+} from 'network/home.js'
 
 export default {
   name: 'home',
   data () {
     return {
       banner: 0,
-      recommend: 0
+      recommend: 0,
+      goods: {
+        pop: {
+          page: 0,
+          list: []
+        },
+        new: {
+          page: 0,
+          list: []
+        },
+        sell: {
+          page: 0,
+          list: []
+        }
+      },
+      goodsDscription: ['pop', 'new', 'sell'],
+      tabControlKeyword: 'pop'
     }
   },
   components: {
@@ -68,16 +55,39 @@ export default {
     swiper,
     recommend,
     weekTop,
-    tabControl
+    tabControl,
+    goodsList
   },
   created () {
-    getHomeData().then(data => {
-      this.banner = data.data.banner
-      this.recommend = data.data.recommend
-    })
+    this.getHomeData()
+    this.getHomeGoods('pop')
+    this.getHomeGoods('new')
+    this.getHomeGoods('sell')
+  },
+  methods: {
+    markControl (index) {
+      this.tabControlKeyword = this.goodsDscription[index]
+    },
+    getHomeData () {
+      getHomeData().then(data => {
+        this.banner = data.data.banner
+        this.recommend = data.data.recommend
+      })
+    },
+    getHomeGoods (type) {
+      const page = this.goods[type].page + 1
+      getHomeGoods(type, page).then(data => {
+        // console.log(data)
+        this.goods[type].list.push(...data.data.list)
+        // console.log(this.goods)
+        this.goods[type].page += 1
+      })
+    }
   }
 }
 </script>
 <style>
-
+.home{
+  margin-bottom:49px;
+}
 </style>
